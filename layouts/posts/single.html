@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article
+  class="box article h-entry"
+  itemscope
+  itemtype="http://schema.org/BlogPosting"
+>
+  <div class="content-core e-content">
+    {{ if .Title }}
+    <h1 itemprop="name headline" class="p-name">{{ .Title }}</h1>
+    {{ end }}
+    <time
+      datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}"
+      itemprop="datePublished"
+      class="dt-published"
+    >
+      {{ .Date.Format "Jan 2, 2006" }}
+    </time>
+    <hr />
+    <div itemprop="articleBody" class="article-body">{{ .Content }}</div>
+    {{ if not .Title }}
+    <a href="{{ .RelPermalink }}" class="u-url" hidden></a>
+    {{ else }}
+    <a href="{{ .RelPermalink }}" hidden></a>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

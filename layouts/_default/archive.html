@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="box article">
+  <div class="content-core">
+    <h2>{{ .Title }}</h2>
+    <hr />
+    <div class="post-list">
+      {{ range .Pages }}
+      <article class="post-link h-entry">
+        {{ if .Title }}
+        <h3>
+          <a href="{{ .RelPermalink }}" class="p-name">
+            {{ .Title }}
+          </a>
+        </h3>
+        {{ else }}
+        <div class="p-name">
+          <a href="{{ .RelPermalink }}" class="u-url">
+            {{ .Summary | plainify | truncate 100 }}
+          </a>
+        </div>
+        {{ end }}
+        <time class="dt-published">{{ .Date.Format "Jan 2, 2006" }}</time>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
