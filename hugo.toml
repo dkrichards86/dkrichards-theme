@@ -1,0 +1,50 @@
+baseURL = "https://dkrichards.com"
+languageCode = "en-us"
+title = "Keith Richards"
+theme = "dkrichards-theme"
+
+# Pagination
+paginate = 8
+
+# Timezone
+timeZone = "America/New_York"
+
+[params]
+  description = "I am a dad in perpetual training, a curious software engineer, a Marine Corps veteran, and a consummate bro."
+  author = "Keith Richards"
+
+  # Default image for posts
+  defaultImage = "/assets/images/dkrichards_square.jpg"
+
+[params.social]
+  github = "dkrichards86"
+  linkedin = "dkrichards"
+
+# Enable RSS feed
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+# Configure RSS
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "feed"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow HTML in markdown
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+    noClasses = false
+
+# Permalinks
+[permalinks]
+  posts = "/:year/:month/:title/"

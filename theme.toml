@@ -1,0 +1,12 @@
+name = "dkrichards Theme"
+license = "MIT"
+licenselink = "https://github.com/dkrichards86/dkrichards86.github.io/blob/master/LICENSE"
+description = "A clean, minimal blog theme converted from Jekyll"
+homepage = "https://dkrichards.com"
+tags = ["blog", "minimal", "clean", "personal"]
+features = ["responsive", "pagination", "rss"]
+min_version = "0.110.0"
+
+[author]
+  name = "Keith Richards"
+  homepage = "https://dkrichards.com"

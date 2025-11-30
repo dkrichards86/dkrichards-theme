@@ -1,0 +1,50 @@
+{{ define "main" }}
+<div class="box article">
+  <div class="content-core">
+    <h2>{{ .Title }}</h2>
+    <hr />
+    <div class="post-list">
+      {{ range .Paginator.Pages }}
+      <article class="post-link h-entry">
+        {{ if .Title }}
+        <h3>
+          <a href="{{ .RelPermalink }}" class="p-name">
+            {{ .Title }}
+          </a>
+        </h3>
+        {{ else }}
+        <div class="p-name">
+          <a href="{{ .RelPermalink }}" class="u-url">
+            {{ .Summary | plainify | truncate 100 }}
+          </a>
+        </div>
+        {{ end }}
+        <time class="dt-published">{{ .Date.Format "Jan 2, 2006" }}</time>
+      </article>
+      {{ end }}
+      <hr />
+      <div class="postlist-footer">
+        <div class="pagination">
+          {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="pagination-previous with-icon">
+              <i class="material-icons">chevron_left</i>
+            </a>
+          {{ end }}
+          <span class="page_number">
+            Page: {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+          </span>
+          {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="pagination-next with-icon">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          {{ end }}
+        </div>
+        <a href="{{ "index.xml" | absURL }}" title="Subscribe via RSS" class="with-icon">
+          <i class="material-icons">rss_feed</i>
+          <span>Subscribe via RSS</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

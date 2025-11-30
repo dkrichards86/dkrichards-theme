@@ -1,0 +1,89 @@
+{{ define "main" }}
+<div class="box h-card card">
+    <div class="card-image u-photo">
+        <img src="/assets/images/dkrichards_square.jpg" alt="" />
+    </div>
+    <div class="card-content">
+        <h2 class="p-name">Keith Richards</h2>
+        <p>
+            I am a dad in perpetual training, a curious software engineer, a Marine Corps veteran, and a consummate bro.
+        </p>
+
+        <div class="social-links">
+            <a
+                href="https://github.com/dkrichards86"
+                target="_blank"
+                title="Follow me out on GitHub"
+                rel="noopener noreferrer"
+            >
+                <img
+                    src="/assets/images/github_min.png"
+                    alt="dkrichards86 on GitHub"
+                />
+            </a>
+            <a
+                href="https://www.linkedin.com/in/dkrichards/"
+                target="_blank"
+                title="Connect with me on LinkedIn"
+                rel="noopener noreferrer"
+            >
+                <img
+                    src="/assets/images/linkedin_min.png"
+                    alt="Connect with me on LinkedIn"
+                />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="box article">
+    <div class="content-core">
+        <h2>
+            Recent Articles
+        </h2>
+        <hr />
+        <div class="post-list">
+            {{ range (.Paginate (where .Site.RegularPages "Type" "in" (slice "post" "posts"))).Pages }}
+            <article class="post-link h-entry">
+                {{ if .Title }}
+                <h3>
+                    <a href="{{ .RelPermalink }}" class="p-name">
+                        {{ .Title }}
+                    </a>
+                </h3>
+                {{ else }}
+                <div class="p-name">
+                    <a href="{{ .RelPermalink }}" class="u-url">
+                        {{ .Summary | plainify | truncate 100 }}
+                    </a>
+                </div>
+                {{ end }}
+                <time class="dt-published">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </article>
+            {{ end }}
+            <hr />
+            <div class="postlist-footer">
+                <div class="pagination">
+                    {{ if .Paginator.HasPrev }}
+                        <a href="{{ .Paginator.Prev.URL }}" class="pagination-previous with-icon">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    {{ end }}
+                    <span class="page_number ">
+                        Page: {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+                    </span>
+                    {{ if .Paginator.HasNext }}
+                        <a href="{{ .Paginator.Next.URL }}" class="pagination-next with-icon">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    {{ end }}
+                </div>
+                <a href="{{ "index.xml" | absURL }}" title="Subscribe via RSS" class="with-icon">
+                    <i class="material-icons">rss_feed</i>
+                    <span>Subscribe via RSS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

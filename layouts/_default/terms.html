@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="box article">
+  <div class="content-core">
+    <h1>{{ .Title }}</h1>
+    <hr />
+    <ul class="taxonomy-list">
+      {{ range .Data.Terms.Alphabetical }}
+      <li>
+        <a href="{{ .Page.Permalink }}">
+          {{ .Page.Title }} ({{ .Count }})
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}

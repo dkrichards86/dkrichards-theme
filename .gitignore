@@ -1,0 +1,23 @@
+# Hugo build artifacts
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node modules (if using npm for SCSS compilation)
+node_modules/
+package-lock.json
+
+# Temporary files
+*.log
+.sass-cache/
